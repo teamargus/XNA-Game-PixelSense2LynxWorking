@@ -1,0 +1,4 @@
+C:\Users\simkeyur\Documents\Visual Studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2Content\obj\x86\Debug\SurfaceApplication2Content.contentprojResolveAssemblyReference.cache
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2Content\obj\x86\Debug\SurfaceApplication2Content.contentprojResolveAssemblyReference.cache
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2Content\obj\x86\Debug\SurfaceApplication2Content.contentprojResolveAssemblyReference.cache
+C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2Content\obj\x86\Debug\SurfaceApplication2Content.contentprojResolveAssemblyReference.cache

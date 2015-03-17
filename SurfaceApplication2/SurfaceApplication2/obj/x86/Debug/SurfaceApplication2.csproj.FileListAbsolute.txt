@@ -1,0 +1,36 @@
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Resources\icon.png
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.xml
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash.xnb
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.exe
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.pdb
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.exe
+c:\users\simkeyur\documents\visual studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.pdb
+C:\Users\simkeyur\Documents\Visual Studio 2010\Projects\SurfaceApplication2\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.csprojResolveAssemblyReference.cache
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Resources\icon.png
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.xml
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash.xnb
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.exe
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.pdb
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.csprojResolveAssemblyReference.cache
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.exe
+C:\Users\simkeyur\Documents\GitHub\SurfaceApplication2\testApplication\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.pdb
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.csprojResolveAssemblyReference.cache
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Resources\icon.png
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.xml
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash.xnb
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash2.xnb
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.exe
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.pdb
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Microsoft.Windows.Design.Interaction.dll
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Microsoft.Windows.Design.Extensibility.dll
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Microsoft.Windows.Design.Interaction.xml
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Microsoft.Windows.Design.Extensibility.xml
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.exe
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.pdb
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.BlackJackForm.resources
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.Properties.Resources.resources
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\SurfaceApplication2.csproj.GenerateResource.Cache
+C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.BlackJackForm.resources

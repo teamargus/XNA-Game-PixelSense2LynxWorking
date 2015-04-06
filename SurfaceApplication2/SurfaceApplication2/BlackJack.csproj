@@ -16,8 +16,10 @@
     <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>5e2d15ee-3328-41f8-86bc-590afc9a3928</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <Thumbnail>
+    </Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -126,22 +128,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlackJackForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BlackJackForm.Designer.cs">
-      <DependentUpon>BlackJackForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BlackJackGame\BlackJackGame.cs" />
-    <Compile Include="BlackJackGame\Player.cs" />
-    <Compile Include="BlackJackGame\State.cs" />
-    <Compile Include="CardGameFramework\Card.cs" />
-    <Compile Include="CardGameFramework\Deck.cs" />
-    <Compile Include="CardGameFramework\Hand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="App1.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="Properties\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -158,13 +147,6 @@
     <Content Include="bin\x86\Debug\SurfaceApplication2.exe" />
     <Content Include="bin\x86\Debug\SurfaceApplication2.pdb" />
     <Content Include="bin\x86\Debug\SurfaceApplication2.xml" />
-    <Content Include="Documentation\CardGameStarterKit.htm" />
-    <Content Include="Documentation\Images\blackjack.JPG" />
-    <Content Include="Documentation\Images\side-vc.gif" />
-    <Content Include="Documentation\Images\top-vc.gif" />
-    <Content Include="Documentation\Images\topjump-vc.gif" />
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SurfaceApplication2Content\SurfaceApplication2Content.contentproj">
@@ -174,100 +156,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Cards\cardSkin.PNG" />
-    <Content Include="Images\Cards\cl1.gif" />
-    <Content Include="Images\Cards\cl10.gif" />
-    <Content Include="Images\Cards\cl2.gif" />
-    <Content Include="Images\Cards\cl3.gif" />
-    <Content Include="Images\Cards\cl4.gif" />
-    <Content Include="Images\Cards\cl5.gif" />
-    <Content Include="Images\Cards\cl6.gif" />
-    <Content Include="Images\Cards\cl7.gif" />
-    <Content Include="Images\Cards\cl8.gif" />
-    <Content Include="Images\Cards\cl9.gif" />
-    <Content Include="Images\Cards\clj.gif" />
-    <Content Include="Images\Cards\clk.gif" />
-    <Content Include="Images\Cards\clq.gif" />
-    <Content Include="Images\Cards\di1.gif" />
-    <Content Include="Images\Cards\di10.gif" />
-    <Content Include="Images\Cards\di2.gif" />
-    <Content Include="Images\Cards\di3.gif" />
-    <Content Include="Images\Cards\di4.gif" />
-    <Content Include="Images\Cards\di5.gif" />
-    <Content Include="Images\Cards\di6.gif" />
-    <Content Include="Images\Cards\di7.gif" />
-    <Content Include="Images\Cards\di8.gif" />
-    <Content Include="Images\Cards\di9.gif" />
-    <Content Include="Images\Cards\dij.gif" />
-    <Content Include="Images\Cards\dik.gif" />
-    <Content Include="Images\Cards\diq.gif" />
-    <Content Include="Images\Cards\he1.gif" />
-    <Content Include="Images\Cards\he10.gif" />
-    <Content Include="Images\Cards\he2.gif" />
-    <Content Include="Images\Cards\he3.gif" />
-    <Content Include="Images\Cards\he4.gif" />
-    <Content Include="Images\Cards\he5.gif" />
-    <Content Include="Images\Cards\he6.gif" />
-    <Content Include="Images\Cards\he7.gif" />
-    <Content Include="Images\Cards\he8.gif" />
-    <Content Include="Images\Cards\he9.gif" />
-    <Content Include="Images\Cards\hej.gif" />
-    <Content Include="Images\Cards\hek.gif" />
-    <Content Include="Images\Cards\heq.gif" />
-    <Content Include="Images\Cards\sp1.gif" />
-    <Content Include="Images\Cards\sp10.gif" />
-    <Content Include="Images\Cards\sp2.gif" />
-    <Content Include="Images\Cards\sp3.gif" />
-    <Content Include="Images\Cards\sp4.gif" />
-    <Content Include="Images\Cards\sp5.gif" />
-    <Content Include="Images\Cards\sp6.gif" />
-    <Content Include="Images\Cards\sp7.gif" />
-    <Content Include="Images\Cards\sp8.gif" />
-    <Content Include="Images\Cards\sp9.gif" />
-    <Content Include="Images\Cards\spj.gif" />
-    <Content Include="Images\Cards\spk.gif" />
-    <Content Include="Images\Cards\spq.gif" />
-    <Content Include="Images\Players\cat.jpg" />
-    <Content Include="Images\Players\dog.jpg" />
-    <Content Include="Images\Players\keyur.jpg" />
-    <Content Include="Images\Players\rubberduck.jpg" />
-    <Content Include="Images\Players\soccerball.jpg" />
-    <Content Include="Images\Players\user.png" />
     <Content Include="obj\x86\Debug\cachefile-{155AA70E-F3AF-4D85-A677-6E3DFB8710AA}-targetpath.txt" />
     <Content Include="obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt" />
     <Content Include="obj\x86\Debug\SurfaceApplication2.csproj.FileListAbsolute.txt" />
     <Content Include="obj\x86\Debug\SurfaceApplication2.exe" />
-    <Content Include="Resources\backGreen.PNG" />
-    <Content Include="Resources\Background.jpg" />
-    <Content Include="Resources\BorderPlaceYourBetBottom.gif" />
-    <Content Include="Resources\BorderPlaceYourBetTop.gif" />
-    <Content Include="Resources\ButtonRound.gif" />
-    <Content Include="Resources\ButtonRoundRollOver.gif" />
-    <Content Include="Resources\ButtonSquare.gif" />
-    <Content Include="Resources\cardSkin.PNG" />
-    <Content Include="Resources\coin1.gif" />
-    <Content Include="Resources\coin2.gif" />
-    <Content Include="Resources\coin3.gif" />
-    <Content Include="Resources\coin4.gif" />
-    <Content Include="Resources\exit-button.png" />
-    <Content Include="Resources\FrameBlue.gif" />
-    <Content Include="Resources\FrameBrightRed.gif" />
-    <Content Include="Resources\FrameOrange.gif" />
-    <Content Include="Resources\FramePink.gif" />
-    <Content Include="Resources\FrameRed.gif" />
-    <Content Include="Resources\FrameTextField1.gif" />
-    <Content Include="Resources\FrameTextField2.gif" />
-    <Content Include="Resources\FrameTextField3.gif" />
-    <Content Include="Resources\FrameTextField4.gif" />
-    <Content Include="Resources\FrameTextField5.gif" />
-    <Content Include="Resources\icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\PlaceYourBetTextField.gif" />
-    <Content Include="Resources\SplashPage.jpg" />
-    <Content Include="Resources\StartMenuIcon.png" />
-    <Content Include="Resources\TemplateIcon.ico" />
-    <Content Include="Resources\TextFieldTop.gif" />
     <Content Include="SurfaceApplication2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -303,7 +195,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="bin\x86\Debug\Content\flash.xnb" />
     <None Include="bin\x86\Debug\Content\flash2.xnb" />
     <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -314,14 +205,6 @@
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
     <None Include="SurfaceApplication2.csproj.Debug.cachefile" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BlackJackForm.resx">
-      <DependentUpon>BlackJackForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\x86\Debug\TempPE\" />

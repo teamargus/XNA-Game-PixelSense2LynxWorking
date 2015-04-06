@@ -16,11 +16,9 @@ C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\Sur
 C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.exe
 C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.pdb
 C:\Users\surface\Documents\GitHub\testApplication-master\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.Properties.Resources.resources
-C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Resources\icon.png
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\SurfaceApplication2.xml
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash.xnb
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash2.xnb
-C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\BlackJack.exe.config
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\BlackJack.exe
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\BlackJack.pdb
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Microsoft.Windows.Design.Interaction.dll
@@ -29,8 +27,5 @@ C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplicati
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Microsoft.Windows.Design.Extensibility.xml
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.csprojResolveAssemblyReference.cache
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.BlackJackForm.resources
-C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.Properties.Resources.resources
-C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.csproj.GenerateResource.Cache
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.exe
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.pdb

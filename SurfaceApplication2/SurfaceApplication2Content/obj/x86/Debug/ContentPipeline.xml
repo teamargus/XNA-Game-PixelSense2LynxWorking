@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash.xnb</Output>
-      <Time>2015-03-10T20:27:46.5593547-05:00</Time>
+      <Time>2015-04-05T20:01:16.6164313-05:00</Time>
     </Item>
     <Item>
       <Source>flash2.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash2.xnb</Output>
-      <Time>2015-03-12T13:22:24.5323222-05:00</Time>
+      <Time>2015-04-05T20:01:16.6174313-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

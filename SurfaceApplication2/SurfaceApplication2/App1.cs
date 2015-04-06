@@ -125,21 +125,56 @@ namespace SurfaceApplication2
             char[] delimeters = { '(', ')' };
             string[] position = touchEvent.Split(delimeters);
             string pos = position[1];
-            string[] axis = pos.Split(',',' ');
+            string[] axis = pos.Split(',', ' ');
             int xAxis = int.Parse(axis[0]);
             int yAxis = int.Parse(axis[2]);
             string[] values = touchEvent.Split('=');
             //Console.WriteLine(values[4]);
+            String[] BinaryArray = new String[8];
             string touchType = "blob";
-            if (values[4].Equals(touchType) && (xAxis>1250) && (xAxis<1900) && (yAxis>0) && (yAxis<500))
+            /*
+            switch(values[4].Equals(touchType) && (xAxis>1250) && (xAxis<1900) && (yAxis>0) && (yAxis<500))
+                    {
+                        case 1  //((xAxis > 1550) && (xAxis < 1600) && (yAxis > 150) && (yAxis < 200))
+                                :
+                            
+                            break;
+
+                        case 2:
+                            //...
+                            break;
+
+                        case 3:
+                            //...
+                            break;
+
+                        case 4:
+                           // ...
+                            break;
+
+                        default:
+                            //...
+                            break;
+
+
+                    }
+            */
+            if (values[4].Equals(touchType) && (xAxis > 1250) && (xAxis < 1900) && (yAxis > 0) && (yAxis < 3000))
             {
-                //Console.WriteLine(axis[0]);
-                //Console.WriteLine(axis[2]);
+                Console.WriteLine("X Axis:");
+                Console.WriteLine(xAxis);
+                Console.WriteLine("Y Axis:");
+                Console.WriteLine(yAxis);
+                /*
                 if ((xAxis > 1550) && (xAxis < 1600) && (yAxis > 150) && (yAxis < 200))
                 {
+                    BinaryArray[1] = "1";
                     Console.WriteLine("Point A");
                 }
-                else if ((xAxis > 1600) && (xAxis < 1650) && (yAxis > 150) && (yAxis < 200))
+                else{
+                    BinaryArray[1] = "1";
+                }
+                if ((xAxis > 1600) && (xAxis < 1650) && (yAxis > 150) && (yAxis < 200))
                 {
                     Console.WriteLine("Point B");
                 }
@@ -163,8 +198,9 @@ namespace SurfaceApplication2
                 {
                     Console.WriteLine("Point G");
                 }
-                
-                
+                 * */
+
+
             }
 
         }
@@ -322,10 +358,10 @@ namespace SurfaceApplication2
                 {
                     if (binaryResult[i] == '1')
                     {
-                        if(st==1)
-                            spriteBatch.Draw(light, new Rectangle(10, 10, 10, 10), sourceRect, Color.White);
+                        if (st == 1)
+                            spriteBatch.Draw(light, new Rectangle((1450 + (i * 15)), 210, 10, 10), sourceRect, Color.White);
                         else
-                            spriteBatch.Draw(light, new Rectangle(10, 10, 10, 10), sourceRect, Color.Black);
+                            spriteBatch.Draw(light, new Rectangle((1450 + (i * 15)), 210, 10, 10), sourceRect, Color.Black);
                     }
                     if (binaryposition <= binaryResultLength - 1)
                     {
@@ -333,7 +369,7 @@ namespace SurfaceApplication2
                     }
 
                 }
-                spriteBatch.Draw(light, new Rectangle(10*20, 10, 10, 10), sourceRect, Color.White);
+                spriteBatch.Draw(light, new Rectangle(1650, 210, 10, 10), sourceRect, Color.White);
                 spriteBatch.End();
 
             }

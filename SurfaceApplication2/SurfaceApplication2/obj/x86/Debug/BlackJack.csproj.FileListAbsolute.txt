@@ -29,3 +29,5 @@ C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplicati
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.exe
 C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\obj\x86\Debug\BlackJack.pdb
+C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\font.xnb
+C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\cardfont.xnb

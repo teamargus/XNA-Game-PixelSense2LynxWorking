@@ -19,6 +19,24 @@
       <Output>C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\flash2.xnb</Output>
       <Time>2015-04-05T20:01:16.6174313-05:00</Time>
     </Item>
+    <Item>
+      <Source>font.png</Source>
+      <Name>font</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2015-04-05T21:25:37.9558046-05:00</Time>
+    </Item>
+    <Item>
+      <Source>cardfont.png</Source>
+      <Name>cardfont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\surface\Documents\GitHub\animation\SurfaceApplication2\SurfaceApplication2\bin\x86\Debug\Content\cardfont.xnb</Output>
+      <Time>2015-04-05T21:25:40.9989787-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

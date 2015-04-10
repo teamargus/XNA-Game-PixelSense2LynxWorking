@@ -1,2 +1,4 @@
 Content\flash.xnb
 Content\flash2.xnb
+Content\font.xnb
+Content\cardfont.xnb

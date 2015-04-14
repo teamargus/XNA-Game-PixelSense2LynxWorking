@@ -5,10 +5,6 @@ using System.Windows.Forms;
 using Microsoft.Surface;
 using Microsoft.Surface.Core;
 using System.Windows;
-
-
-
-using Microsoft.Surface;
 using Microsoft.Surface.Presentation;
 using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation.Input;
@@ -21,6 +17,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Storage;
 using System.Threading;
+using System.Text;
 
 namespace SurfaceApplication2
 {
@@ -30,8 +27,9 @@ namespace SurfaceApplication2
     
     public class App1 : Microsoft.Xna.Framework.Game
     {
-        
-        //CardGame Inputs
+
+        #region CardGame Initialization
+
         public ContentManager content;
         public static Texture2D cardFont;
         public static Texture2D textFont;
@@ -85,28 +83,24 @@ namespace SurfaceApplication2
 
         bool keyhit = false;
 
-        //CardGame End
-        
-        
+        # endregion
+
+        # region Transfer Initialization
+
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
         public static SpriteBatch cardBatch;
         Texture2D light;
-        int elapse;
+        int elapse = 0;
         bool flag = false;
-        float delay = 10f;
-        int frame = 0;
+        float delay = 100f; //Time delay for flash
         string binaryResult;
         Rectangle sourceRect;
         int binaryResultLength = 0;
         int binaryposition = 0;
-        int location=-1;
+        int location=0;
         char[] arr;
-        char character = ' ';
-        int count = 0;
-        string myString = "apple, igyv ijbgihn bbibno buibnhjionho kvjbnjklnhinovyjvhukmhompbjk";
+        //string myString = "apple, igyv ijbgihn bbibno buibnhjionho kvjbnjklnhinovyjvhukmhompbjk";
         int st = 0;
-
 
         private TouchTarget touchTarget;
         private Color backgroundColor = new Color(0, 0, 0);
@@ -115,23 +109,12 @@ namespace SurfaceApplication2
         private UserOrientation currentOrientation = UserOrientation.Bottom;
         private Matrix screenTransform = Matrix.Identity;
 
-        /// <summary>
-        /// The target receiving all surface input for the application.
-        /// </summary>
-        protected TouchTarget TouchTarget
-        {
-            get { return touchTarget; }
-        }
+        # endregion
 
-        #region Initialization
-
-        /// <summary>
-        /// Moves and sizes the window to cover the input surface.
-        /// </summary>
-        
-         //A class to hold cards - pretty simple a card only holds a face value and a suite
-        //it also contains its own draw event and information on how to display itself
         #region CardStuff
+        //A class to hold cards - pretty simple a card only holds a face value and a suite
+        //it also contains its own draw event and information on how to display itself
+        
         public class Card : IComparable
         {
             private int face;
@@ -687,6 +670,7 @@ namespace SurfaceApplication2
 
         #endregion
 
+        # region Constructor
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -696,7 +680,21 @@ namespace SurfaceApplication2
             Content.RootDirectory = "Content";
             content = new ContentManager(Services);
         }
+        # endregion
 
+        # region Surface Methods
+
+        /// <summary>
+        /// The target receiving all surface input for the application.
+        /// </summary>
+        protected TouchTarget TouchTarget
+        {
+            get { return touchTarget; }
+        }
+
+        /// <summary>
+        /// Moves and sizes the window to cover the input surface.
+        /// </summary>
         private void SetWindowOnSurface()
         {
             System.Diagnostics.Debug.Assert(Window != null && Window.Handle != IntPtr.Zero,
@@ -728,7 +726,8 @@ namespace SurfaceApplication2
                 "Surface input already initialized");
             if (touchTarget != null)
                 return;
-
+            
+            /*
             touchTarget = new TouchTarget((IntPtr)0, EventThreadChoice.OnBackgroundThread); // I Want to capture all runing application events.    
             touchTarget.EnableInput();
             touchTarget.TouchDown += new EventHandler<TouchEventArgs>(touchTarget_TouchDown);
@@ -737,8 +736,14 @@ namespace SurfaceApplication2
             // Create a target for surface input.
             touchTarget = new TouchTarget(Window.Handle, EventThreadChoice.OnBackgroundThread);
             touchTarget.EnableInput();
+             */
         }
 
+        # endregion
+
+        
+        #region TouchInput Recognization
+        /*
         //recognises touch input
         void touchTarget_TouchDown(object sender, TouchEventArgs e)
         {
@@ -753,11 +758,11 @@ namespace SurfaceApplication2
             //Console.WriteLine(values[4]);
             String[] BinaryArray = new String[8];
             string touchType = "blob";
-            /*
+            
+            
             switch(values[4].Equals(touchType) && (xAxis>1250) && (xAxis<1900) && (yAxis>0) && (yAxis<500))
                     {
-                        case 1  //((xAxis > 1550) && (xAxis < 1600) && (yAxis > 150) && (yAxis < 200))
-                                :
+                        case 1: ((xAxis > 1550) && (xAxis < 1600) && (yAxis > 150) && (yAxis < 200))
                             
                             break;
 
@@ -779,7 +784,8 @@ namespace SurfaceApplication2
 
 
                     }
-            */
+             
+            
             if (values[4].Equals(touchType) && (xAxis > 1250) && (xAxis < 1900) && (yAxis > 0) && (yAxis < 500))
             {
                 Console.WriteLine("X Axis:");
@@ -824,12 +830,13 @@ namespace SurfaceApplication2
 
             }
 
+
         }
+           */  
+        # endregion
+        
 
-        #endregion
-
-        #region Overridden Game Methods
-
+        # region Initialize, Load, UnloadContents
         /// <summary>
         /// Allows the app to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -878,20 +885,10 @@ namespace SurfaceApplication2
                 screenTransform = inverted;
             }
 
-            //fullscreen
-
             graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
-
-            //binary conversion
-           
-            arr = myString.ToCharArray();
-            //char myText = (char)('~'+1);
-            //byte[] arr = System.Text.Encoding.ASCII.GetBytes(myText);
-
-
             base.Initialize();
 
         }
@@ -906,7 +903,8 @@ namespace SurfaceApplication2
             Vector2 spritePosition = Vector2.Zero;
             
             cardBatch = new SpriteBatch(graphics.GraphicsDevice);
-            light = Content.Load<Texture2D>("flash2");
+            light = Content.Load<Texture2D>("flash2");                        //testing different flash
+            //light = Content.Load<Texture2D>("flash");
 
             // TODO: use this.Content to load your application content here
 
@@ -937,6 +935,9 @@ namespace SurfaceApplication2
             }
         }
 
+        # endregion
+
+        # region update
         /// <summary>
         /// Allows the app to run logic such as updating the world,
         /// checking for collisions, gathering input and playing audio.
@@ -954,29 +955,34 @@ namespace SurfaceApplication2
                 {
                     // TODO: Process touches, 
                     // use the following code to get the state of all current touch points.
-                    ReadOnlyTouchPointCollection touches = touchTarget.GetState();
+                    //ReadOnlyTouchPointCollection touches = touchTarget.GetState();  //Seth's Testing
                     //Console.WriteLine(touches.ToString());
                     //Console.WriteLine(touchTarget.ToString());
                 }
 
-                //  Add your logics for 1 and 0 to here
-
-
-                elapse += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-                if (elapse % delay == 0)
+                if (flag == true)
                 {
-                   if (location < arr.Length)
-                      {
-                        location++;
-                      }
-                   st = 1;
-                }
-                else
-                   st = 0;
+                    elapse += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-                sourceRect = new Rectangle(0, 0, 100, 100);
-                //destRect = new Rectangle(frame*100, frame*100, 100, 100);
+                    if (elapse % delay == 0)
+                    {
+                        if (location < arr.Length)
+                        {
+                            location++;
+                        }
+                        else
+                        {
+                            location = 0;
+                            //flag = false;
+                        }
+                        st = 1;
+                    }
+                    else
+                        st = 0;
+
+                    sourceRect = new Rectangle(0, 0, 100, 100);
+                    //destRect = new Rectangle(frame*100, frame*100, 100, 100);
+                }
             }
             if (gamestate != gs_animating) //if we're in animating mode we don't want to process anything else
             {
@@ -994,7 +1000,9 @@ namespace SurfaceApplication2
             }
 
         }
+        # endregion
 
+        # region play game methods
         //code for actual gameplay
         void playRound()
         {
@@ -1049,25 +1057,6 @@ namespace SurfaceApplication2
             {
                 keyhit = true;
                 gamestate = gs_standing; //once you stand you're done, and we'll just wait for the dealer now!
-
-                cardBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-                for (int i = 0; i < binaryResultLength; i++)
-                {
-                    if (binaryResult[i] == '1')
-                    {
-                        if (st == 1)
-                            cardBatch.Draw(light, new Rectangle((1450 + (i * 15)), 210, 10, 10), sourceRect, Color.White);
-                        else
-                            cardBatch.Draw(light, new Rectangle((1450 + (i * 15)), 210, 10, 10), sourceRect, Color.Black);
-                    }
-                    if (binaryposition <= binaryResultLength - 1)
-                    {
-                        binaryposition++;
-                    }
-
-                }
-                cardBatch.Draw(light, new Rectangle(1650, 210, 10, 10), sourceRect, Color.White);
-                cardBatch.End();
             }
 
 
@@ -1094,8 +1083,9 @@ namespace SurfaceApplication2
 
 
         }
+        # endregion
 
-
+        # region Draw
         /// <summary>
         /// This is called when the app should draw itself.
         /// </summary>
@@ -1117,42 +1107,62 @@ namespace SurfaceApplication2
             svalue = "DEALER " + Convert.ToString(deck.hand2SumBJ());
             gameFont.drawText(svalue, 320, 128, Color.White);
 
-            gameFont.drawText("DATA TRANSFER:" , 1600, 90, Color.White);
+            gameFont.drawText("DATA TRANSFER" , 1600, 90, Color.White);
 
             //if the game is over draw the results
             if (gamestate == gs_gameover)
             {
+                flag = true;
                 int dealer = deck.hand2SumBJ();
                 int player = deck.hand1SumBJ();
-                if (dealer > 21) { gameFont.drawText("DEALER BUST PRESS ENTER", 256, 400, Color.Red); }
-                else if (player > 21) { gameFont.drawText("PLAYER BUST PRESS ENTER", 256, 400, Color.Red); }
-                else if (player > dealer) { gameFont.drawText("YOU WON PRESS ENTER", 256, 400, Color.Red); }
-                else if (dealer == 21 & player == 21) { gameFont.drawText("TIE PRESS ENTER", 256, 400, Color.Red); }
-                else { gameFont.drawText("HOUSE WINS PRESS ENTER", 256, 400, Color.Red); }
-            }
-            else //if the game is over draw my crappy instructions (hey my gamefont doesn't have brackets yet!)
-            {
-                gameFont.drawText("H IT OR S TAND", 264, 400, Color.Red);
-            }
-
-
-            if (location < arr.Length)
-            {
-               binaryResult = ConvertToBinary(arr[location]);
-               binaryResultLength = binaryResult.Length;
-                //       Console.WriteLine(binaryResult.ToString());
-                       //Console.WriteLine(binaryResultLength.ToString());
-
-              
+                string result;
+                if (dealer > 21)
+                {
+                    gameFont.drawText("DEALER BUST PRESS ENTER", 256, 400, Color.Red);
+                    result = "DealerBust";
+                }
+                else if (player > 21)
+                {
+                    gameFont.drawText("PLAYER BUST PRESS ENTER", 256, 400, Color.Red);
+                    result = "PlayerBust";
+                }
+                else if (player > dealer)
+                {
+                    gameFont.drawText("YOU WON PRESS ENTER", 256, 400, Color.Red);
+                    result = "YouWon";
+                }
+                else if (dealer == 21 & player == 21)
+                {
+                    gameFont.drawText("TIE PRESS ENTER", 256, 400, Color.Red);
+                    result = "Tie";
+                }
+                else
+                {
+                    gameFont.drawText("HOUSE WINS PRESS ENTER", 256, 400, Color.Red);
+                    result = "DealerWon";
+                }
+                string transferString = result;
+                arr = transferString.ToCharArray();
+                if(location < arr.Length)
+                {
+                    binaryResult = ConvertToBinary(arr[location]);
+                }
+               
+                //Console.WriteLine(arr[location].ToString());
+                binaryResultLength = binaryResult.Length;
 
                 for (int i = 0; i < binaryResultLength; i++)
                 {
                     if (binaryResult[i] == '1')
                     {
                         if (st == 1)
-                            cardBatch.Draw(light, new Rectangle((1450 + (i * 15)), 210, 10, 10), sourceRect, Color.White);
+                        {
+                            //cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 39), 10, 10), sourceRect, Color.Black);
+                            cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 20), 20, 20), sourceRect, Color.Black); //Seth's Testing
+                        }
                         else
-                            cardBatch.Draw(light, new Rectangle((1450 + (i * 15)), 210, 10, 10), sourceRect, Color.Black);
+                            //cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 39), 10, 10), sourceRect, Color.White);
+                            cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 20), 20, 20), sourceRect, Color.White); //Seth's Testing
                     }
                     if (binaryposition <= binaryResultLength - 1)
                     {
@@ -1160,9 +1170,24 @@ namespace SurfaceApplication2
                     }
 
                 }
-                cardBatch.Draw(light, new Rectangle(1650, 210, 10, 10), sourceRect, Color.White);
-              
+                //cardBatch.Draw(light, new Rectangle(1650, 210, 10, 10), sourceRect, Color.White);
+                cardBatch.Draw(light, new Rectangle(1550, 210, 10, 10), sourceRect, Color.White); //Seth's Testing
 
+            }
+            else //if the game is over draw my crappy instructions (hey my gamefont doesn't have brackets yet!)
+            {
+                gameFont.drawText("H IT OR S TAND", 264, 400, Color.Red);
+            }
+
+            if (flag == true)
+            {
+                if (location < arr.Length)
+                {
+                    binaryResult = ConvertToBinary(arr[location]);
+                    binaryResultLength = binaryResult.Length;
+                    //Console.WriteLine(binaryResult.ToString());
+                    //Console.WriteLine(binaryResultLength.ToString());
+                }
             }
             
 
@@ -1176,19 +1201,24 @@ namespace SurfaceApplication2
                 applicationLoadCompleteSignalled = true;
             }
 
-            //TODO: Rotate the UI based on the value of screenTransform here if desired
-
-            //GraphicsDevice.Clear(backgroundColor);
-
-       
-
-            //TODO: Add your drawing code here
-            //TODO: Avoid any expensive logic if application is neither active nor previewed
-            
             base.Draw(gameTime);
         }
 
+        # endregion
 
+        # region BinaryConversion Methods
+
+        public static string BinaryToString(string data)
+        {
+            List<Byte> byteList = new List<Byte>();
+
+            for (int i = 0; i < data.Length; i += 8)
+            {
+                byteList.Add(Convert.ToByte(data.Substring(i, 8), 2));
+            }
+
+            return Encoding.ASCII.GetString(byteList.ToArray());
+        }
 
         public static string ConvertToBinary(char asciiString)
         {

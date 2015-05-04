@@ -33,10 +33,9 @@ namespace SurfaceApplication2
 
                 using (App1 app = new App1())
                 {
+                   
                     app.Run();
                 }
-
-           
         }
 
         /// <summary>

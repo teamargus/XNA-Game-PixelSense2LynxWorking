@@ -98,6 +98,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Project1">
+      <HintPath>..\..\..\..\Visual Studio 2010\Projects\project2\Project1\bin\Debug\Project1.exe</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -128,6 +131,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="App1.cs" />
@@ -136,6 +140,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SurfaceWindow1.xaml.cs" />
+    <Compile Include="TagVisualization1.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\x86\Debug\Microsoft.Surface.Presentation.Design.dll" />
@@ -162,6 +168,7 @@
     <Content Include="obj\x86\Debug\SurfaceApplication2.exe" />
     <Content Include="SurfaceApplication2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

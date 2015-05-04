@@ -18,6 +18,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Storage;
 using System.Threading;
 using System.Text;
+using TransferSystem;
 
 namespace SurfaceApplication2
 {
@@ -83,6 +84,12 @@ namespace SurfaceApplication2
 
         bool keyhit = false;
 
+        GraphicsDevice device;
+        Texture2D backgroundTexture;
+        Texture2D foregroundTexture;
+        int screenWidth;
+        int screenHeight;
+
         # endregion
 
         # region Transfer Initialization
@@ -100,8 +107,12 @@ namespace SurfaceApplication2
         int location=0;
         char[] arr;
         char[] binaryArr;
+        char[] BinaryArr;
+        char[] BinaryLength;
         //string myString = "apple, igyv ijbgihn bbibno buibnhjionho kvjbnjklnhinovyjvhukmhompbjk";
         int st = 0;
+        int i = 0;
+        static Texture2D _pointTexture;
 
         private TouchTarget touchTarget;
         private Color backgroundColor = new Color(0, 0, 0);
@@ -109,6 +120,9 @@ namespace SurfaceApplication2
 
         private UserOrientation currentOrientation = UserOrientation.Bottom;
         private Matrix screenTransform = Matrix.Identity;
+
+        private TransferManager tm;
+
 
         # endregion
 
@@ -336,10 +350,10 @@ namespace SurfaceApplication2
             //cd_
             Vector2 activeCardDestPos = Vector2.Zero;  //screen position that the card in transit wants to go
             Vector2 activeCardPosition = Vector2.Zero; //current screen position of the card in transit
-            public Vector2 deckPosition = new Vector2(0, 0);  //screen position of the deck
-            public Vector2 hand1Position = new Vector2(0, 256);  //screen position of the first Hand
-            public Vector2 hand2Position = new Vector2(0, 128);
-            public Vector2 discardPosition = new Vector2(16, 128);
+            public Vector2 deckPosition = new Vector2(1000, 200);  //screen position of the deck
+            public Vector2 hand1Position = new Vector2(700, 800);  //screen position of the first Hand
+            public Vector2 hand2Position = new Vector2(600, 170);
+            public Vector2 discardPosition = new Vector2(1240, 128);
 
             Card activeCard = new Card("00");  //the Card object of the card in transit
 
@@ -495,7 +509,7 @@ namespace SurfaceApplication2
             //ShowTop specifies whether top card should be shown or hidden
             private void drawStack(Vector2 pos, bool ShowTop, List<Card> stackToDraw)
             {
-                drawStack(Convert.ToInt32(pos.X), Convert.ToInt32(pos.Y), ShowTop, stackToDraw);
+                //drawStack(Convert.ToInt32(pos.X), Convert.ToInt32(pos.Y), ShowTop, stackToDraw);
             }
             private void drawStack(int x, int y, bool showTop, List<Card> stackToShow)
             {
@@ -680,6 +694,9 @@ namespace SurfaceApplication2
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             content = new ContentManager(Services);
+            tm = new TransferManager();
+            tm.ReceivedData += testPrint;
+            
         }
         # endregion
 
@@ -728,7 +745,6 @@ namespace SurfaceApplication2
             if (touchTarget != null)
                 return;
             
-            
             touchTarget = new TouchTarget((IntPtr)0, EventThreadChoice.OnBackgroundThread); // I Want to capture all runing application events.    
             touchTarget.EnableInput();
             touchTarget.TouchDown += new EventHandler<TouchEventArgs>(touchTarget_TouchDown);
@@ -736,13 +752,15 @@ namespace SurfaceApplication2
 
             // Create a target for surface input.
             touchTarget = new TouchTarget(Window.Handle, EventThreadChoice.OnBackgroundThread);
+            
             touchTarget.EnableInput();
+
+            tm.addTouchListener(touchTarget);
              
         }
 
         # endregion
 
-        
         #region TouchInput Recognization
         //recognises touch input
         void touchTarget_TouchDown(object sender, TouchEventArgs e)
@@ -755,8 +773,7 @@ namespace SurfaceApplication2
             int xAxis = int.Parse(axis[0]);
             int yAxis = int.Parse(axis[2]);
             string[] values = touchEvent.Split('=');
-            //Console.WriteLine(values[4]);
-            String[] BinaryArray = new String[8];
+            Console.WriteLine(values[4]);
             string touchType = "blob";
             string binaryString;
             
@@ -786,60 +803,235 @@ namespace SurfaceApplication2
 
                     }
              */
-
-            int i = 0;
-            if (values[4].Equals(touchType) && (xAxis > 1250) && (xAxis < 1900) && (yAxis > 0) && (yAxis < 1000))
+            i = 0; //changing i to 0, to start fresh loop
+            /*while (BinaryLength.Length != 2)
             {
-                //Console.WriteLine("X Axis:");
-                //Console.WriteLine(xAxis);
-                //Console.WriteLine("Y Axis:");
-                //Console.WriteLine(yAxis);
-                
-                if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 200) && (yAxis < 220))
+                if (values[4].Equals(touchType) && (xAxis > 1250) && (xAxis < 1900) && (yAxis > 0) && (yAxis < 1000))
                 {
-                    BinaryArray[i] = "1";
-                    //Console.WriteLine("Point A");
-                    i++;
-                }
+
+                    if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 200) && (yAxis < 220))
+                    {
+                        BinaryLength[i] = '0';
+                        //Console.WriteLine("0");
+                        i++;
+                    }
                     //Gap of 29 Pixels
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 239) && (yAxis < 259))
-                {
-                    Console.WriteLine("Point B");
-                }
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 278) && (yAxis < 298))
-                {
-                    Console.WriteLine("Point C");
-                }
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 317) && (yAxis < 337))
-                {
-                    Console.WriteLine("Point D");
-                }
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 356) && (yAxis < 376))
-                {
-                    Console.WriteLine("Point E");
-                }
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 395) && (yAxis < 415))
-                {
-                    Console.WriteLine("Point F");
-                }
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 434) && (yAxis < 454))
-                {
-                    Console.WriteLine("Point G");
-                }
-                else if ((xAxis > 1440) && (xAxis < 1460) && (yAxis > 512) && (yAxis < 532))
-                {
-                    Console.WriteLine("Point H");
-                }
-               
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 239) && (yAxis < 259))
+                    {
+                        BinaryLength[i] = '1';
+                        //Console.WriteLine("1");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 278) && (yAxis < 298))
+                    {
+                        BinaryLength[i] = '2';
+                        //Console.WriteLine("2");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 317) && (yAxis < 337))
+                    {
+                        BinaryLength[i] = '3';
+                        //Console.WriteLine("3");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 356) && (yAxis < 376))
+                    {
+                        BinaryLength[i] = '4';
+                        //Console.WriteLine("4");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 395) && (yAxis < 415))
+                    {
+                        BinaryLength[i] = '5';
+                        //Console.WriteLine("5");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 434) && (yAxis < 454))
+                    {
+                        BinaryLength[i] = '6';
+                        //Console.WriteLine("6");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 512) && (yAxis < 532))
+                    {
+                        BinaryLength[i] = '7';
+                        //Console.WriteLine("7");
+                        i++;
+                    }
 
+                    //New Column Start
 
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 200) && (yAxis < 220))
+                    {
+                        BinaryLength[i] = '8';
+                        //Console.WriteLine("8");
+                        i++;
+                    }
+                    //Gap of 29 Pixels
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 239) && (yAxis < 259))
+                    {
+                        BinaryLength[i] = '9';
+                        //Console.WriteLine("9");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 278) && (yAxis < 298))
+                    {
+                        BinaryLength[i] = 'a';
+                        //Console.WriteLine("a");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 317) && (yAxis < 337))
+                    {
+                        BinaryLength[i] = 'b';
+                        //Console.WriteLine("b");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 356) && (yAxis < 376))
+                    {
+                        BinaryLength[i] = 'c';
+                        //Console.WriteLine("c");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 395) && (yAxis < 415))
+                    {
+                        BinaryLength[i] = 'd';
+                        //Console.WriteLine("d");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 434) && (yAxis < 454))
+                    {
+                        BinaryLength[i] = 'e';
+                        //Console.WriteLine("e");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 512) && (yAxis < 532))
+                    {
+                        BinaryLength[i] = 'f';
+                        //Console.WriteLine("f");
+                        i++;
+                    }
+                }
+            }*/
+
+            string binLength = new string(BinaryLength);
+
+            i = 0; //changing i to 0, to start fresh loop
+            while (i != 2)
+            {
+                if (values[4].Equals(touchType)) // && (xAxis > 1250) && (xAxis < 1900) && (yAxis > 0) && (yAxis < 1000)
+                {
+                    //Console.WriteLine("X Axis:");
+                    //Console.WriteLine(xAxis);
+                    //Console.WriteLine("Y Axis:");
+                    //Console.WriteLine(yAxis);
+
+                    if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 200) && (yAxis < 220))
+                    {
+                        BinaryArr[i] = '0';
+                        //Console.WriteLine("0");
+                        i++;
+                    }
+                    //Gap of 29 Pixels
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 239) && (yAxis < 259))
+                    {
+                        BinaryArr[i] = '1';
+                        //Console.WriteLine("1");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 278) && (yAxis < 298))
+                    {
+                        BinaryArr[i] = '2';
+                        //Console.WriteLine("2");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 317) && (yAxis < 337))
+                    {
+                        BinaryArr[i] = '3';
+                        //Console.WriteLine("3");
+                        i++;
+                    }
+                    else if ((xAxis > 1530) && (xAxis < 1560) && (yAxis > 530) && (yAxis < 560))
+                    {
+                        BinaryArr[i] = '4';
+                        Console.WriteLine("4");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 395) && (yAxis < 415))
+                    {
+                        BinaryArr[i] = '5';
+                        //Console.WriteLine("5");
+                        i++;
+                    }
+                    else if ((xAxis > 1653) && (xAxis < 1673) && (yAxis > 434) && (yAxis < 454))
+                    {
+                        BinaryArr[i] = '6';
+                        //Console.WriteLine("6");
+                        i++;
+                    }
+                    else if ((xAxis > 1553) && (xAxis < 1573) && (yAxis > 512) && (yAxis < 532))
+                    {
+                        BinaryArr[i] = '7';
+                        //Console.WriteLine("7");
+                        i++;
+                    }
+
+                    //New Column Start
+
+                    else if ((xAxis > 1670) && (xAxis < 1700) && (yAxis > 370) && (yAxis < 400))
+                    {
+                        BinaryArr[i] = '8';
+                        Console.WriteLine("8");
+                        i++;
+                    }
+                    //Gap of 29 Pixels
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 239) && (yAxis < 259))
+                    {
+                        BinaryArr[i] = '9';
+                        //Console.WriteLine("9");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 278) && (yAxis < 298))
+                    {
+                        BinaryArr[i] = 'a';
+                        //Console.WriteLine("a");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 317) && (yAxis < 337))
+                    {
+                        BinaryArr[i] = 'b';
+                        //Console.WriteLine("b");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 356) && (yAxis < 376))
+                    {
+                        BinaryArr[i] = 'c';
+                        //Console.WriteLine("c");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 395) && (yAxis < 415))
+                    {
+                        BinaryArr[i] = 'd';
+                        //Console.WriteLine("d");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 434) && (yAxis < 454))
+                    {
+                        BinaryArr[i] = 'e';
+                        //Console.WriteLine("e");
+                        i++;
+                    }
+                    else if ((xAxis > 1602) && (xAxis < 1622) && (yAxis > 512) && (yAxis < 532))
+                    {
+                        BinaryArr[i] = 'f';
+                        //Console.WriteLine("f");
+                        i++;
+                    }
+                }
             }
-
 
         }
         # endregion
         
-
         # region Initialize, Load, UnloadContents
         /// <summary>
         /// Allows the app to perform any initialization it needs to before starting to run.
@@ -921,6 +1113,11 @@ namespace SurfaceApplication2
 
                 //this is our main sprite batch, i'm using a single batch for the whole game,
                 //so the deck and card drawing methods are actually using this spritebatch
+                device = graphics.GraphicsDevice;
+                backgroundTexture = Content.Load<Texture2D>("background");
+                screenWidth = 1400;
+                screenHeight = 1020;
+
                
 
         }
@@ -969,14 +1166,14 @@ namespace SurfaceApplication2
 
                     if (elapse % delay == 0)
                     {
-                        if (location <= arr.Length)
+                        if (location < arr.Length)
                         {
                             location++;
                         }
                         else
                         {
-                            //location = 0;
-                            flag = false;
+                            location = 0;
+                            //flag = false;
                         }
                         st = 1;
                     }
@@ -1001,7 +1198,12 @@ namespace SurfaceApplication2
                     if (newState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter)) { this.Initialize(); }
                 }
             }
+            //tm.receive();
 
+        }
+        public void testPrint(object sender, LynxReceivedArgs<string> e)
+        {
+            Console.Write("transfered Data" + e.Data + "\n");
         }
         # endregion
 
@@ -1089,6 +1291,21 @@ namespace SurfaceApplication2
         # endregion
 
         # region Draw
+
+        public static void DrawRectangle(SpriteBatch spriteBatch, Rectangle rectangle, Color color, int lineWidth)
+        {
+            if (_pointTexture == null)
+            {
+                _pointTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+                _pointTexture.SetData<Color>(new Color[] { Color.White });
+            }
+
+            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), color);
+            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), color);
+            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), color);
+            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), color);
+        }     
+
         /// <summary>
         /// This is called when the app should draw itself.
         /// </summary>
@@ -1100,17 +1317,26 @@ namespace SurfaceApplication2
             // TODO: Add your drawing code here
             
             cardBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-
+            DrawBg();
             // let the deck object draw whatever it needs (including calling each card's draw event)
             deck.Draw();
 
-            //draw the scores
-            string svalue = "   YOU " + Convert.ToString(deck.hand1SumBJ());
-            gameFont.drawText(svalue, 320, 256, Color.White);
-            svalue = "DEALER " + Convert.ToString(deck.hand2SumBJ());
-            gameFont.drawText(svalue, 320, 128, Color.White);
+            /*
+            public Vector2 deckPosition = new Vector2(1000, 200);  //screen position of the deck
+            public Vector2 hand1Position = new Vector2(700, 800);  //screen position of the first Hand
+            public Vector2 hand2Position = new Vector2(600, 170);
+            public Vector2 discardPosition = new Vector2(1240, 128);
+             * */
 
-            gameFont.drawText("DATA TRANSFER" , 1600, 90, Color.White);
+            //draw the scores
+            string svalue = "   YOU" + Convert.ToString(deck.hand1SumBJ());
+            gameFont.drawText(svalue, 600, 950, Color.White);
+            svalue = "DEALER " + Convert.ToString(deck.hand2SumBJ());
+            gameFont.drawText(svalue, 600, 330, Color.White);
+
+            gameFont.drawText("PLACE YOUR LYNX BELOW" , 1450, 150, Color.White);
+            
+            App1.DrawRectangle(cardBatch, new Rectangle(1490, 220, 250, 470), Color.Green, 1);
 
             //if the game is over draw the results
             if (gamestate == gs_gameover)
@@ -1121,70 +1347,67 @@ namespace SurfaceApplication2
                 string result;
                 if (dealer > 21)
                 {
-                    gameFont.drawText("DEALER BUST PRESS ENTER", 256, 400, Color.Red);
+                    gameFont.drawText("DEALER BUST PRESS ENTER", 600, 675, Color.Red);
                     result = "DealerBust";
                 }
                 else if (player > 21)
                 {
-                    gameFont.drawText("PLAYER BUST PRESS ENTER", 256, 400, Color.Red);
+                    gameFont.drawText("PLAYER BUST PRESS ENTER", 600, 675, Color.Red);
                     result = "PlayerBust";
                 }
                 else if (player > dealer)
                 {
-                    gameFont.drawText("YOU WON PRESS ENTER", 256, 400, Color.Red);
+                    gameFont.drawText("YOU WON PRESS ENTER", 600, 675, Color.Red);
                     result = "YouWon";
                 }
                 else if (dealer == 21 & player == 21)
                 {
-                    gameFont.drawText("TIE PRESS ENTER", 256, 400, Color.Red);
+                    gameFont.drawText("TIE PRESS ENTER", 600, 675, Color.Red);
                     result = "Tie";
                 }
                 else
                 {
-                    gameFont.drawText("HOUSE WINS PRESS ENTER", 256, 400, Color.Red);
+                    gameFont.drawText("HOUSE WINS PRESS ENTER", 600, 675, Color.Red);
                     result = "DealerWon";
                 }
+
                 
-                string WhiteSpace = " ";
-                string transferString = result + WhiteSpace;
+
+                string transferString = result;
                 arr = transferString.ToCharArray();
-                
-                if(location <= arr.Length)
+                if (location < arr.Length)
                 {
                     binaryResult = ConvertToBinary(arr[location]);
                 }
-               
+
                 //Console.WriteLine(arr[location].ToString());
                 binaryResultLength = binaryResult.Length;
 
-                if (flag == true)
+                for (int i = 0; i < binaryResultLength; i++)
                 {
-                    for (int i = 0; i < binaryResultLength; i++)
+                    if (binaryResult[i] == '1')
                     {
-                        if (binaryResult[i] == '1')
+                        if (st == 1)
                         {
-                            if (st == 1)
-                            {
-                                cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 39), 10, 10), sourceRect, Color.Black);
-                                //cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 20), 20, 20), sourceRect, Color.Black); //Seth's Testing
-                            }
-                            else
-                                cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 39), 10, 10), sourceRect, Color.White);
+                            cardBatch.Draw(light, new Rectangle((1540), 370 + (i * 39), 30, 30), sourceRect, Color.Black);
+                            //cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 20), 20, 20), sourceRect, Color.Black); //Seth's Testing
+                        }
+                        else
+                            cardBatch.Draw(light, new Rectangle((1540), 370 + (i * 39), 30, 30), sourceRect, Color.White);
                             //cardBatch.Draw(light, new Rectangle((1450), 210 + (i * 20), 20, 20), sourceRect, Color.White); //Seth's Testing
-                        }
-                        if (binaryposition <= binaryResultLength - 1)
-                        {
-                            binaryposition++;
-                        }
-
                     }
-                    //cardBatch.Draw(light, new Rectangle(1650, 210, 10, 10), sourceRect, Color.White);
-                    cardBatch.Draw(light, new Rectangle(1550, 210, 10, 10), sourceRect, Color.White); //Seth's Testing
+                    if (binaryposition <= binaryResultLength - 1)
+                    {
+                        binaryposition++;
+                    }
+
                 }
+                //cardBatch.Draw(light, new Rectangle(1650, 210, 10, 10), sourceRect, Color.White);
+                //cardBatch.Draw(light, new Rectangle(1550, 210, 10, 10), sourceRect, Color.White); //Seth's Testing
             }
             else //if the game is over draw my crappy instructions (hey my gamefont doesn't have brackets yet!)
             {
-                gameFont.drawText("H IT OR S TAND", 264, 400, Color.Red);
+                gameFont.drawText("PRESS H IT OR S TAND", 600, 675, Color.Red);
             }
 
             if (flag == true)
@@ -1235,6 +1458,12 @@ namespace SurfaceApplication2
             result += Convert.ToString((int)asciiString, 2);
 
             return result;
+        }
+
+        private void DrawBg()
+        {
+            Rectangle screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
+            cardBatch.Draw(backgroundTexture, screenRectangle, Color.White);
         }
 
         #endregion
